@@ -1,25 +1,88 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+import Addmovie from "./components/Addmovie";
+import Moviedetails from "./components/Moviedetails";
+import Searchpage from "./components/Searchpage";
+import Notfound from "./components/Notfound";
+
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Navbar/>
+
+     <Switch>
+
+     <Route exact path="/">
+     <Home/>
+     </Route>
+
+     <Route path="/add">
+     <Addmovie/>
+     </Route>
+     <Route path="/moviedetails:id">
+      <Moviedetails/>
+     </Route>
+
+      <Route path="/search:searchval">
+       <Searchpage/>
+      </Route>
+
+      <Route path="*">
+        <Notfound />
+      </Route>
+
+     </Switch>
+
     </div>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
